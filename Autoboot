@@ -1,0 +1,33 @@
+Sudo nano /etc/systemd/system/kiosk.service
+
+[Unit]
+Description=Kiosk Python Script in Virtual Environment
+After=graphical.target
+
+[Service]
+ExecStart=/home/extinguished/myenv/bin/python /home/extinguished/Project/screen.py
+WorkingDirectory=/home/extinguished/Project
+Restart=always
+User=extinguished
+Environment=XAUTHORITY=/home/extinguished/.Xauthority
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=graphical.target
+
+ GNU nano 7.2            /etc/systemd/system/kiosk.service                     
+[Unit]
+Description=Kiosk Python Script in Virtual Environment
+After=graphical.target
+
+[Service]
+ExecStartPre=/usr/bin/xrandr --output HDMI-0 --mode 800x480 --rate 60
+ExecStart=/home/extinguished/myenv/bin/python /home/extinguished/Project/screen>
+WorkingDirectory=/home/extinguished/Project
+Restart=always
+User=extinguished
+Environment=XAUTHORITY=/home/extinguished/.Xauthority
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=graphical.target
